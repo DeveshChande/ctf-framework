@@ -61,12 +61,13 @@ fetch_core_ctfd () {
 # Install CTFd plugins
 fetch_ctfd_plugins () {
     git clone https://github.com/YWxleGlz/CTFd-Plugins.git
-    mv CTFd-Plugins/CTFd-Unique_flags CTFd/CTFd/plugins/unique_flags
-    git clone https://github.com/Bigyls/CTFdDockerContainersPlugin.git CTFd/CTFd/plugins/containers
+    mv CTFd-Plugins/CTFd-Unique_flags CTFd/plugins/unique_flags
+    git clone https://github.com/Bigyls/CTFdDockerContainersPlugin.git CTFd/plugins/containers
 }
 
 deploy_ctfd () {
     cd CTFd
+    sudo docker build -t dockerfiles/Dockerfile .
     docker compose up
 }
 
