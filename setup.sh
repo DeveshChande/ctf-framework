@@ -67,7 +67,7 @@ fetch_ctfd_plugins () {
 
 deploy_ctfd () {
     cd CTFd
-    sudo docker build -t dockerfiles/Dockerfile .
+    sudo docker -f dockerfiles/Dockerfile build -t .
     docker compose up
 }
 
