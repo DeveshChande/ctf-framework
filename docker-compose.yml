@@ -28,10 +28,13 @@ services:
   nginx:
     image: nginx:stable
     restart: always
+    hostname: localhost
     volumes:
       - ./conf/nginx/http.conf:/etc/nginx/nginx.conf
+      - ./conf/nginx/private.key:/etc/nginx/key.pem
+      - ./conf/nginx/self-signed-cert.crt:/etc/nginx/cert.crt
     ports:
-      - 80:80
+      - "443:8443"
     depends_on:
       - ctfd
 
