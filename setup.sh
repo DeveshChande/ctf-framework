@@ -67,7 +67,7 @@ fetch_ctfd_plugins () {
 
 deploy_ctfd () {
     cd CTFd
-    sudo docker -f dockerfiles/Dockerfile build -t .
+    sudo docker build -t challenge-base-template:latest -f ../dockerfiles/Dockerfile .
     docker compose up
 }
 
