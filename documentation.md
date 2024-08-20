@@ -10,6 +10,13 @@ The project is operating system agnostic, relying on the Docker engine to meet c
 ### Installation
 The installation process is largely automated, so that organizers may focus on challenge creation and user issues.
 
+The installation script installs CTFd without any client-server encryption. To integrate HTTPS connections, do the following:
+- Navigate to the `ctf-framework/conf/nginx/` directory.
+- Generate a private key and an associated self-signed certificate.
+    - `openssl genrsa -out private.key 4096`
+    - `openssl req -new -key private.key -out certificate.csr`
+    - `openssl x509 -req -days 365 -in certificate.csr -signkey private.key -out self-signed-cert.crt`
+
 The following process assumes that the executing user has root or sudoer privileges:
 1. git clone https://github.com/DeveshChande/ctf-framework.git
 2. cd ctf-framework
