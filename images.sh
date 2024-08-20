@@ -11,11 +11,11 @@ read -p "Enter the Docker Hub URL: " url
 result=$(extract_image_name "$url")
 
 # Build the docker image
-docker build -t result .
+docker build -t $result .
 
 # Check if the build was successful
 if [ $? -eq 0 ]; then
-    echo "Docker image '$repo_name' built successfully."
+    echo "Docker image '$result' built successfully."
 else
     echo "Failed to build the Docker image '$repo_name'."
 fi
