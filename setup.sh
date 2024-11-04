@@ -67,6 +67,9 @@ fetch_ctfd_plugins () {
 
 deploy_ctfd () {
     cd CTFd
+    openssl genrsa -out ./conf/nginx/private.key 4096
+    openssl req -new -key ./conf/nginx/private.key -out ./conf/nginx/certificate.csr -subj "/C=US/ST=MA/L=Boston/O=Northeastern University/OU=Khoury College of Computer Sciences/CN=Casual CTF"
+    openssl x509 -req -days 365 -in ./conf/nginx/certificate.csr -signkey ./conf/nginx/private.key -out ./conf/nginx/self-signed-cert.crt
     sudo docker build -t challenge-base-template:latest -f ../dockerfiles/Dockerfile .
     docker compose up
 }
