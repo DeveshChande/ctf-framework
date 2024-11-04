@@ -16,3 +16,4 @@ RUN sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes\nPasswordA
 
 # Expose the SSH port
 EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
